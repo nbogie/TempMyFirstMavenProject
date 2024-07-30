@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
@@ -10,11 +11,15 @@ public class Main {
         myMain.doStuff();
     }
 
-    private void doStuff(){
-        logger.info(String.format("Hello and welcome caller %d %n", 100000));
+    private void doStuff() {
+        if (logger.isLoggable((Level.INFO))) {
+            logger.info(String.format("Hello and welcome caller %d %n", 100000));
+        }
 
         for (int i = 1; i <= 5; i++) {
-            logger.info(String.format("i = %d", i));
+            if (logger.isLoggable((Level.INFO))) {
+                logger.info(String.format("i = %d", i));
+            }
         }
     }
 }
